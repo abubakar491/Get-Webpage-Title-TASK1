@@ -8,7 +8,7 @@ app.set('view engine', 'pug');
 const port = process.env.PORT || 3000;
 
 
-app.get('/home', async(req, res) => {
+app.get('/home', (req, res) => {
 
     const address = req.query.address;
     const addressArray = validateQueryParams(address); 

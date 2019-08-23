@@ -4,7 +4,7 @@ const cheerio = require('cheerio');
 const validateUrl = require('./validate')
 const validateQueryParams = require('./validate-query-params');
 
-const fetchTitle = async(link, callback) => {
+const fetchTitle = (link, callback) => {
     request(link , function (error, response, body) {
         if (!error && response.statusCode == 200) {
             const $ = cheerio.load(body);
