@@ -4,11 +4,12 @@ const {getTitles} = require('./controller/fetch-title');
 const validateQueryParams = require('./controller/validate-query-params');
 
 const app = express();
-app.set('view engine', 'pug');
 const port = process.env.PORT || 3000;
+app.set('view engine', 'pug');
 
 
-app.get('/home', (req, res) => {
+
+app.get('/I/want/title', (req, res) => {
 
     const address = req.query.address;
     const addressArray = validateQueryParams(address); 
@@ -17,5 +18,10 @@ app.get('/home', (req, res) => {
         res.render('index', {"results": result});
     });
 });
+
+app.get('*', (req, res)=> {
+    res.status(404).send('<h3>ERROR 404</h3>');
+});
+  
 
 app.listen(port, () => console.log(`Server listening on PORT:  ${port}!`))
